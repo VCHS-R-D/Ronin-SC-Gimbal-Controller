@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.cps": "javascript",
+        "chrono": "cpp"
+    }
+}
