@@ -3,7 +3,7 @@
 
 #define SBUS_BAUD (100000)
 
-#define SBUS_NUM_CHANNELS (16)
+#define SBUS_NUM_CHANNELS (22)
 #define SBUS_PACKET_SIZE (25)
 #define SBUS_HEADER (0x0f)
 #define SBUS_END (0x00)

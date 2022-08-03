@@ -10,5 +10,6 @@ add_subdirectory(raspberry-sbus)
 
 # Create a new executable target with a single source file main.cpp
 # and link it with the library
+# add_executable(main main.cpp)
 add_executable(main main.cpp)
 target_link_libraries(main PUBLIC libsbus)
