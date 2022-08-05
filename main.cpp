@@ -9,7 +9,7 @@ using std::chrono::milliseconds;
 
 class GimbalPacket {
     private:
-        unsigned char channels[22]; // 1-byte packets
+        unsigned char channels[16]; // 1-byte each
         static SBUS sbus;
         std::string uartPath;
         sbus_packet_t packet = {
@@ -19,12 +19,12 @@ class GimbalPacket {
                     .frameLost = false,
             };
     public:
-        GimbalPacket(SBUS & sbus, std::string uartPath) { // default constructor sending 0
+        GimbalPacket(SBUS & sbus, std::string uartPath, uint16_t signal) { // default constructor sending 0
             this->sbus = sbus;
             this->uartPath = uartPath;
             
-            for (int i=0; i<22; i++) 
-                packet.channels[i] = 0;
+            for (int i=0; i<3; i++) 
+                packet.channels[i] = signal;
 
             // set sbus
             sbus_err_t err = sbus.install(uartPath.c_str(), false);  // false for non-blocking
@@ -56,15 +56,14 @@ class GimbalPacket {
                 lastSend = now;
             }
         }
-
 };
 
 int main(int argc, char ** argv) {
     SBUS sbus;
-    GimbalPacket testing (sbus, "/dev/ttyAMA0");
+    GimbalPacket testing (sbus, "/dev/ttyAMA0", 500);
     // Gimbal Packet Init
     std::cout << "Packet ready" << std::endl;
     
-    testing.sendEvery(500);
+    testing.send();
 
 }
