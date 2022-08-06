@@ -47,6 +47,7 @@ class GimbalPacket {
         void sendRepeat(void) {
             sbus_err_t err;
             // non-blocking mode, read() will check if any data is available and return immediately
+            int count (0);
             while ((err = sbus.read()) != SBUS_FAIL)
             {
                 // desync means a packet was misaligned and not received properly
@@ -68,6 +69,7 @@ class GimbalPacket {
 
                     // make sure to limit sending frequency, SBUS is not that fast
                     sbus.write(packet);
+                    std::cout<<count++<<": ";
                     this->printPacketChannels();
                 }
             }
@@ -123,5 +125,6 @@ int main(int argc, char ** argv) {
     // Gimbal Packet Init
 
     testing.basicPacketConfig();
+
     testing.sendRepeat();
 }
