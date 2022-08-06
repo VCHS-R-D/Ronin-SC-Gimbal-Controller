@@ -24,7 +24,7 @@ class GimbalPacket {
             };
 
     public:
-        GimbalPacket(SBUS & sbus, std::string uartPath, uint16_t signal, int ms=1000) { 
+        GimbalPacket(SBUS & sbus, std::string uartPath, uint16_t signal) { 
             this->ms = ms;
             this->sbus = sbus;
             this->uartPath = uartPath;
