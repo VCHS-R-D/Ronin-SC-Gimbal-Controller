@@ -9,28 +9,33 @@
 BMC_SBUS mySBUS;
 
 const int sbusWAIT = 7; //frame timing delay in msecs
+const int sbusSIGNAL = 20;
+
+/*
+ * @brief convert sbus packet values to something more readable as an argument
+ * @param speed value can be from -10 to 10
+ * @return sbus packet value
+*/
+int speed_controller(int speed_value) {
+  if (abs(speed_value) > 10) return 0;
+  else return (speed_value, -10, 10, 0, 2047);
+}
 
 void setup() {
   // Start BMC_SBUS object
-
   mySBUS.begin();
-
 }
 
 void loop() {
-
-    //Map wiichuck values which go from 0-255 to Sbus values 0-2047
-    // For no move send 1023
-    int tiltValue = map(20,0,255,0,2047);
+    int tiltValue = map(sbusSIGNAL,0,255,0,2047);
 
     // Set sbus tilt
-    mySBUS.Servo(TILT_CH,tiltValue);
-
-    // Check if trigger(button Z) is pressed, if so send the X value to roll channel
+    mySBUS.Servo(PAN_CH,tiltValue);
    
     // Update SBUS object and send data
     mySBUS.Update();
     mySBUS.Send();
+
     // Delay for SBUS
     delay(sbusWAIT);
     
