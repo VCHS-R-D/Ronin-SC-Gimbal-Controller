@@ -7,7 +7,6 @@ enum Direction {
   REVERSE
 } Motor;
 
-
 // channels
 #define PAN_CH 1
 #define TILT_CH 2
@@ -22,16 +21,19 @@ const int reverseSPEED = 2047-400;
 const int forwardSPEED = 500;
 int sbusSIGNAL = forwardSPEED;
 
-Timer<2> scheduler;
+Timer<3> scheduler;
 
+int dir = 0;
+
+void read_serial(void) {
+  if (Serial.available() > 0) {
+     dir = Serial.read();
+     sbusSIGNAL = dir==1?reverseSPEED:forwardSPEED;
+  }
+}
 
 void stop_action(void) {
   sbusSIGNAL = STOP;
-  
-}
-
-void reverse(void) {
-  sbusSIGNAL = reverseSPEED;
 }
 
 void motor_controller(void) {
@@ -46,10 +48,10 @@ void motor_controller(void) {
 
 void setup() {
   // Start BMC_SBUS object
-  
   mySBUS.begin();
   scheduler.every(sbusWAIT, motor_controller);
-  scheduler.at(7000, stop_action);
+  scheduler.every(sbusWAIT/10, read_serial);
+//  scheduler.at(7000, stop_action);
 }
 
 void loop() {

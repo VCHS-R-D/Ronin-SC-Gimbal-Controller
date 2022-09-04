@@ -1,11 +1,8 @@
-import serial
+from pynput.keyboard import Key, Listener
+import serial 
 
-ser = serial.Serial("COM4", 9600)
-   
-# Send character 'S' to start the program
-ser.write(bytearray('S','ascii'))
+ser = serial.Serial("COM4", baudrate=100000)
 
-# Read line   
 while True:
-    bs = ser.readline()
-    print(bs)
+    ser.write(1)
+    print("Wrote value", end="\n")

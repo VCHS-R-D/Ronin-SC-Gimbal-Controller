@@ -1,33 +1,3 @@
-/*
-
-  Keyboard test
-
-  For the Arduino Leonardo, Micro or Due
-
-  Reads a byte from the serial port, sends a keystroke back.
-
-  The sent keystroke is one higher than what's received, e.g. if you send a,
-
-  you get b, send A you get B, and so forth.
-
-  The circuit:
-
-  - none
-
-  created 21 Oct 2011
-
-  modified 27 Mar 2012
-
-  by Tom Igoe
-
-  This example code is in the public domain.
-
-  http://www.arduino.cchttps://www.arduino.cc/en/Tutorial/KeyboardSerial
-
-*/
-
-#include "Keyboard.h"
-
 void setup() {
 
   // open the serial port:
@@ -36,7 +6,6 @@ void setup() {
 
   // initialize control over the keyboard:
 
-  Keyboard.begin();
 }
 
 void loop() {
@@ -47,11 +16,9 @@ void loop() {
 
     // read incoming serial data:
 
-    char inChar = Serial.read();
+    int num = Serial.read();
 
-    // Type the next ASCII value from what you received:
-
-    Keyboard.write(inChar + 1);
+    Serial.println(num);
 
   }
 }
