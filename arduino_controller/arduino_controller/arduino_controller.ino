@@ -34,6 +34,7 @@ void read_serial(void) {
      
      if (r == 1) sbusSIGNAL = forwardSPEED;
      else if (r == 2) sbusSIGNAL = reverseSPEED;
+     else sbusSIGNAL = STOP;
   }
 }
 
@@ -58,12 +59,11 @@ void setup() {
   mySBUS.begin();
   // Start sofware serial
   rpi_reciever.begin(9600);
-  
   // schedule recurrent tasks and ROUTINES
   scheduler.every(sbusWAIT, motor_controller);
-  scheduler.every(1, read_serial);
 }
 
 void loop() {
   scheduler.tick();
+  read_serial();
 }
