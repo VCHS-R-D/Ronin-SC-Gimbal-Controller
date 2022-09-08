@@ -5,7 +5,7 @@
 enum Direction {
   FORWARD,
   REVERSE
-} Motor;
+};
 
 // channels
 #define PAN_CH 1
@@ -23,12 +23,12 @@ int sbusSIGNAL = forwardSPEED;
 
 Timer<3> scheduler;
 
-int dir = 0;
-
 void read_serial(void) {
   if (Serial.available() > 0) {
-     dir = Serial.read();
-     sbusSIGNAL = dir==1?reverseSPEED:forwardSPEED;
+     r = Serial.read();
+     
+     if (r == 1) sbusSIGNAL = forwardSPEED;
+     else if (r == 2) sbusSIGNAL = reverseSPEED;
   }
 }
 
@@ -38,6 +38,7 @@ void stop_action(void) {
 
 void motor_controller(void) {
     // Set sbus tilt
+
     mySBUS.Servo(PAN_CH, sbusSIGNAL);
    
     // Update SBUS object and send data
@@ -50,7 +51,7 @@ void setup() {
   // Start BMC_SBUS object
   mySBUS.begin();
   scheduler.every(sbusWAIT, motor_controller);
-  scheduler.every(sbusWAIT/10, read_serial);
+  scheduler.every(1, read_serial);
 //  scheduler.at(7000, stop_action);
 }
 
