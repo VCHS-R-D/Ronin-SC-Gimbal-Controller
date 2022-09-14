@@ -2,7 +2,6 @@
 #include <arduino-timer.h>
 #include <SoftwareSerial.h>
 
-
 enum Direction {
   FORWARD,
   REVERSE
@@ -20,17 +19,19 @@ enum Direction {
 
 //Declare BMC_SBUS Object
 BMC_SBUS mySBUS;
+SoftwareSerial rpi_receiver (RX, TX);
+
 
 const int sbusWAIT = 7; //frame timing delay in msecs
 const int reverseSPEED = 2047-400;
 const int forwardSPEED = 500;
-int sbusSIGNAL = forwardSPEED;
+int sbusSIGNAL = STOP;
 
 Timer<3> scheduler;
 
 void read_serial(void) {
   if (rpi_receiver.available() > 0) {
-     r = rpi_receiver.read();
+     int r = rpi_receiver.read();
      
      if (r == 1) sbusSIGNAL = forwardSPEED;
      else if (r == 2) sbusSIGNAL = reverseSPEED;
@@ -52,13 +53,11 @@ void motor_controller(void) {
     
 }
 
-SoftwareSerial rpi_receiver (RX, TX);
-
 void setup() {
   // Start BMC_SBUS object
   mySBUS.begin();
   // Start sofware serial
-  rpi_reciever.begin(9600);
+  rpi_receiver.begin(9600);
   // schedule recurrent tasks and ROUTINES
   scheduler.every(sbusWAIT, motor_controller);
 }
