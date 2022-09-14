@@ -1,19 +1,17 @@
 from pynput import keyboard
 from serial import Serial
+import time
 
 ser = Serial("/dev/ttyAMA0", baudrate=9600)
 
 def on_press(key):
     try:
-        print('{0} pressed'.format(
-            key.char))
+        print(f'key {key.char} pressed ')
         
         if key.char == '1':
-            print('FORWARD', end='\n')
-            ser.write(bytes(b'1'))
+            ser.write(b'1')
         if key.char == '2':
-            print('REVERSE', end='\n')
-            ser.write(bytes(b'2'))
+            ser.write(b'2')
     except AttributeError:
         print('special key {0} pressed'.format(
             key))
