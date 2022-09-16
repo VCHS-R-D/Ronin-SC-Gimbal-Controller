@@ -7,10 +7,12 @@ ser = Serial("/dev/ttyAMA0", baudrate=9600)
 def on_press(key):
     try:
         print("pressed:", key.char)
-        if key.char == '1':
-            ser.write(b'1')
-        if key.char == '2':
-            ser.write(b'2')
+        ser.write(bytes(str(key.char),'utf-8'))
+
+        #if key.char == '1':
+        #    ser.write(b'1')
+        #if key.char == '2':
+        #    ser.write(b'2')
     except AttributeError:
         print('special key {0} pressed'.format(
             key))
