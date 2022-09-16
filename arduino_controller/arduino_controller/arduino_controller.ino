@@ -14,8 +14,8 @@ enum Direction {
 #define STOP 1023 
 
 // pins
-#define RX 2
-#define TX 3
+#define RX 3
+#define TX 4
 
 //Declare BMC_SBUS Object
 BMC_SBUS mySBUS;
@@ -30,13 +30,15 @@ int sbusSIGNAL = STOP;
 Timer<3> scheduler;
 
 void read_serial(void) {
+//  sbusSIGNAL = STOP;
   if (rpi_receiver.available() > 0) {
     // read as char 
      int r = rpi_receiver.read()-'0';
-     
-     if (r == 1) sbusSIGNAL = forwardSPEED;
+     Serial.println(r);
+     if (r == 0) sbusSIGNAL = STOP;
+     else if (r == 1) sbusSIGNAL = forwardSPEED;
      else if (r == 2) sbusSIGNAL = reverseSPEED;
-     else sbusSIGNAL = STOP;
+     else if (r == 3) 
   }
 }
 
@@ -47,7 +49,7 @@ void stop_action(void) {
 void motor_controller(void) {
     // Set sbus tilt
     mySBUS.Servo(PAN_CH, sbusSIGNAL);
-   
+
     // Update SBUS object and send data
     mySBUS.Update();
     mySBUS.Send();
