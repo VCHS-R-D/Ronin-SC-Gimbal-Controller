@@ -31,7 +31,8 @@ Timer<3> scheduler;
 
 void read_serial(void) {
   if (rpi_receiver.available() > 0) {
-     int r = rpi_receiver.read();
+    // read as char 
+     int r = rpi_receiver.read()-'0';
      
      if (r == 1) sbusSIGNAL = forwardSPEED;
      else if (r == 2) sbusSIGNAL = reverseSPEED;
