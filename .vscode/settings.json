@@ -9,5 +9,6 @@
         "vector": "cpp",
         "string_view": "cpp",
         "initializer_list": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }
