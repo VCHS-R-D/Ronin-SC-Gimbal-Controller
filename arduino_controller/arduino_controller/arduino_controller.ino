@@ -12,7 +12,7 @@
 #define FW 500
 #define BW 1647
 
-// pins
+// software serial pins
 #define RX 3
 #define TX 4
 //time
