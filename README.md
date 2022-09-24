@@ -3,4 +3,6 @@ Using Ronin SC s bus signals produced by a raspberry pi, digital inverter, and a
 # Setup
 1. Download library from source: https://github.com/boldstelvis/BMC_SBUS
 2. Extract the subdirectory "BMC_SBUS", not the whole repo, into the Arduino/libraries folder
-3. Use arduino_controller.ino file in arduino_controller
+3. Use arduino_controller.ino file in arduino_controller and upload the code to the arduino
+4. Run the keyboard.py input code on a raspberry pi
+
