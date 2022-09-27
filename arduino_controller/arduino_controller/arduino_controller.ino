@@ -12,9 +12,10 @@
 #define FW 500
 #define BW 1647
 
-// software serial pins
+// pins
 #define RX 3
 #define TX 4
+
 //time
 #define sbusWAIT 7
 
@@ -30,33 +31,21 @@ void read_serial(void) {
 //  sbusSIGNAL = STOP;
   if (rpi_receiver.available() > 0) {
     // read as char 
-     int r = rpi_receiver.read()-'0'; 
-     switch(r) {
-      case 0:
-        sbusSIGNAL[0] = STOP;
-        sbusSIGNAL[1] = STOP;
-        sbusSIGNAL[2] = STOP;
-        break;
-      case 1:
-        sbusSIGNAL[0] = FW;
-        break;
-      case 2:
-        sbusSIGNAL[0] = BW; 
-        break;
-      case 3:
-        sbusSIGNAL[1] = FW;
-        break;
-      case 4:
-        sbusSIGNAL[1] = BW;
-        break;
-      case 5:
-        sbusSIGNAL[2] = FW;
-        break;
-      case 6:
-        sbusSIGNAL[2] = BW;
-        break; 
+     int r = rpi_receiver.read()-'0';
+     
+     if (r == 0) {
+      sbusSIGNAL[0] = STOP;
+      sbusSIGNAL[1] = STOP;
+      sbusSIGNAL[2] = STOP;
      }
      
+     else if (r == 1) sbusSIGNAL[0] = FW;
+     else if (r == 2) sbusSIGNAL[0] = BW;
+     else if (r == 3) sbusSIGNAL[1] = FW;
+     else if (r == 4) sbusSIGNAL[1] = BW;
+     else if (r == 5) sbusSIGNAL[2] = FW;
+     else if (r == 6) sbusSIGNAL[2] = BW;
+  }
 }
 
 void motor_controller(void) {
