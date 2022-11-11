@@ -23,40 +23,24 @@ BMC_SBUS mySBUS;
 SoftwareSerial rpi_receiver (RX, TX);
 
 int sbusSIGNAL[3];
-
 Timer<3> scheduler;
 
 void read_serial(void) {
-//  sbusSIGNAL = STOP;
   if (rpi_receiver.available() > 0) {
-    // read as char 
-     int r = rpi_receiver.read()-'0'; 
-     switch(r) {
+     int cmd = rpi_receiver.read();
+     int ch = cmd/3;
+     int v = cmd%3; 
+     switch(v) {
       case 0:
-        sbusSIGNAL[0] = STOP;
-        sbusSIGNAL[1] = STOP;
-        sbusSIGNAL[2] = STOP;
+        sbusSIGNAL[ch] = BW;
         break;
       case 1:
-        sbusSIGNAL[0] = FW;
+        sbusSIGNAL[ch] = STOP;
         break;
       case 2:
-        sbusSIGNAL[0] = BW; 
+        sbusSIGNAL[0] = FW; 
         break;
-      case 3:
-        sbusSIGNAL[1] = FW;
-        break;
-      case 4:
-        sbusSIGNAL[1] = BW;
-        break;
-      case 5:
-        sbusSIGNAL[2] = FW;
-        break;
-      case 6:
-        sbusSIGNAL[2] = BW;
-        break; 
      }
-     
 }
 
 void motor_controller(void) {
