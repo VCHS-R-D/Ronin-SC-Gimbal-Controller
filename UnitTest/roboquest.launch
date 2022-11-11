@@ -1,0 +1,4 @@
+<launch>
+	<node name="cputemp" pkg="roboquest" type="cputemp.py" />
+	<node name="gimbal" pkg="roboquest" type="gimbal.py" />
+</launch>
