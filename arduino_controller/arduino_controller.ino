@@ -41,6 +41,7 @@ void read_serial(void) {
         sbusSIGNAL[ch] = FW; 
         break;
      }
+  }
 }
 
 void motor_controller(void) {

@@ -14,7 +14,11 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   if (rpi_receiver.available() > 0) {
-    int r = rpi_receiver.read()-'0'; 
-    Serial.println(r);
+     int cmd = rpi_receiver.read();
+     int ch = cmd/3;
+     int v = cmd%3; 
+     Serial.print("[");
+     Serial.print(ch); Serial.print(", "); Serial.print(v);
+     Serial.println("]");
   }
-}A
+}
