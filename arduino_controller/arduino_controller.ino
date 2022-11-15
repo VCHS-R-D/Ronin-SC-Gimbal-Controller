@@ -38,16 +38,9 @@ void read_serial(void) {
         sbusSIGNAL[ch] = STOP;
         break;
       case 2:
-<<<<<<< Updated upstream
-        sbusSIGNAL[0] = FW; 
-        break;
-     }
-=======
         sbusSIGNAL[ch] = FW; 
         break;
      }
-  }
->>>>>>> Stashed changes
 }
 
 void motor_controller(void) {
