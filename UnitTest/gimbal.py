@@ -17,7 +17,7 @@ define BW 1647
 
 
 def map_speed(data: int) -> int:
-    return (data - 0)*(SPEED_BW - SPEED_FW)
+    return 2047 - (data - 0)*(SPEED_BW - SPEED_FW)
 
 def callbackPan(msg):
 	data = msg.data
@@ -53,7 +53,8 @@ def gimbal():
 	rospy.Subscriber('pan',Int32, callbackPan)
 	rospy.Subscriber('tilt',Int32, callbackTilt)
 	rospy.Subscriber('roll',Int32, callbackRoll)
-    rospy.spin()
+ 	rospy.spin()
+    
     ser.close()
 
 if __name__ == '__main__':
