@@ -8,6 +8,8 @@ Controlling the Ronin SC Gimbal with:
 
 # Circuit
 
+![B3B34C7C-5882-4E6B-92DE-43166F233875](https://user-images.githubusercontent.com/72239682/203432870-04043f85-1c44-4fe1-934b-ee7d6ade57bf.jpeg)
+
 # Arduino Quick Start
 
 1. Download BMC_SBUS Library
