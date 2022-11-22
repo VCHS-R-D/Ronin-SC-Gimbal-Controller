@@ -1,3 +1,5 @@
 raspberry-sbus/.idea/
 raspberry-sbus/cmake-build-*/
 build/
+
+.DS_STORE

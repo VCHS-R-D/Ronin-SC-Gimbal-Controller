@@ -1,8 +1,19 @@
-# GIMBAL_PROJECT
-Using Ronin SC s bus signals produced by a raspberry pi, digital inverter, and an arduino microcontroller to control the DJI gimbal
-# Setup
-1. Download library from source: https://github.com/boldstelvis/BMC_SBUS
-2. Extract the subdirectory "BMC_SBUS", not the whole repo, into the Arduino/libraries folder
-3. Use arduino_controller.ino file in arduino_controller and upload the code to the arduino
-4. Run the keyboard.py input code on a raspberry pi
+# Project Goal
 
+Control a Ronin SC Gimbal with a Raspberry Pi
+
+# Gimbal Description
+
+<img>
+
+# Schematic and Circuitry
+
+# Quick Start
+
+1. Download the BMC_SBUS Arduino Library
+
+- Download library from source: https://github.com/boldstelvis/BMC_SBUS
+- Extract the subdirectory "BMC_SBUS", not the whole repo, into the Arduino/libraries folder
+
+2. Use arduino_controller.ino file in arduino_controller and upload the code to the arduino
+3. Run the ROS Topic
