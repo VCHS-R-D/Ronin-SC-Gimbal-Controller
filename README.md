@@ -6,3 +6,8 @@ Using Ronin SC s bus signals produced by a raspberry pi, digital inverter, and a
 3. Use arduino_controller.ino file in arduino_controller and upload the code to the arduino
 4. Run the keyboard.py input code on a raspberry pi
 
+# Setup for ROS
+1. Flash RPI OS with roboquest software system (only available to VCHS)
+2. Run the nodes in the UnitTest file
+3. Open up the UI software
+4. Send joystick commands through the UI joystick
