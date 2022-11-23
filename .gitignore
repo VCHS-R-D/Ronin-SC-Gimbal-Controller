@@ -1,5 +1,5 @@
 raspberry-sbus/.idea/
 raspberry-sbus/cmake-build-*/
 build/
-
+.vscode
 .DS_STORE
