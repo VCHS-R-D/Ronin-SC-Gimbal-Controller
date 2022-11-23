@@ -20,7 +20,7 @@ Controlling the Ronin SC Gimbal with:
 
 2. Upload arduino_controller.ino (in arduino_controller) to an Arduino
 3. Run keyboard.py on a pi
-
+- remember to get the SoftwareSerial package as it is relied on for receiving key inputs from the raspberry pi
 # ROS Quick Start
 
 1. Flash RPI OS with roboquest software system (only available to VCHS)
