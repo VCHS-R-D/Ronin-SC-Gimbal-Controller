@@ -28,3 +28,5 @@ Controlling the Ronin SC Gimbal with:
 3. copy and paste gimbal.py to your main package
 4. Go to the Robot Dashboard Site
 5. Create a Joystick that publishes to the topic /transform
+
+- you will need the roboquest pi hat for completing the roboquest setup
