@@ -23,14 +23,14 @@ Controlling the Ronin SC Gimbal with:
 2. Upload arduino_controller.ino (in arduino_controller) to an Arduino
 3. Run keyboard.py on a pi
 
-- remember to get the SoftwareSerial package as it is relied on for receiving key inputs from the raspberry pi
+NOTE: Install the SoftwareSerial library in Arduino IDE if necessary
 
 # ROS Quick Start
 
-1. Flash RPI OS with roboquest software system (only available to VCHS)
+1. Flash a Raspberry Pi with the RoboQuest OS (only available to VCHS)
 2. Do all steps from Arduino Quick Start
-3. copy and paste gimbal.py to your main package
+3. Copy and paste gimbal.py into your main package
 4. Go to the Robot Dashboard Site
 5. Create a Joystick that publishes to the topic /transform
 
-- you will need the roboquest pi hat for completing the roboquest setup
+NOTE: you will need a Roboquest PiHat
