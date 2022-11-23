@@ -8,7 +8,7 @@ Controlling the Ronin SC Gimbal with:
 
 # Circuit
 
-![B3B34C7C-5882-4E6B-92DE-43166F233875](https://user-images.githubusercontent.com/72239682/203432870-04043f85-1c44-4fe1-934b-ee7d6ade57bf.jpeg)
+![9E77B69A-0D8B-41FC-BE7E-A73A88B2DBD5](https://user-images.githubusercontent.com/72239682/203463755-5a2ced45-bd45-41da-8e0c-7f8d2f6dd1ce.jpeg)
 - Inverter is for inverting the serial signal from TX into an SBUS signal
 - Raspberry pi connects to arduino board through uart channel and software serial
 # Arduino Quick Start
