@@ -8,6 +8,8 @@
 using std::chrono::steady_clock;
 using std::chrono::milliseconds;
 
+#define SBUS_WAIT 7
+
 class GimbalPacket {
 
     private:
@@ -63,7 +65,7 @@ class GimbalPacket {
                 * Receiving happens independently so we can do other things.
                 * Here we send a packet every second.
                 */
-                if (now - lastWrite > milliseconds(ms))
+                if (now - lastWrite > milliseconds(SBUS_WAIT))
                 {
                     lastWrite = now;
 
@@ -79,7 +81,7 @@ class GimbalPacket {
             static auto lastPrint = steady_clock::now();
             auto now = steady_clock::now();
 
-            if (now - lastPrint > milliseconds(ms/2))
+            if (now - lastPrint > milliseconds(SBUS_WAIT))
             {
                 for (int i = 0; i < 16; ++i)
                     std::cout << "ch" << i + 1 << ": " << packet.channels[i] << "\t";
