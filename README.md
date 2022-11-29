@@ -12,7 +12,7 @@ Controlling the Ronin SC Gimbal with:
 
 - A Serial inverter is used to invert the serial signal from the Arduino TX into an SBUS signal the Gimbal understands
 - A Raspberry pi connects to the Arduino board from UART3 TX to pin 3 on the Arduino so that they can communicate through Software Serial
-
+- When communicating with Serial between 2 devices, the 2 devices GND must be connected too
 # Arduino Quick Start
 
 1. Download BMC_SBUS Library
@@ -29,8 +29,9 @@ NOTE: Install the SoftwareSerial library in Arduino IDE if necessary
 
 1. Flash a Raspberry Pi with the RoboQuest OS (only available to VCHS)
 2. Do all steps from Arduino Quick Start
-3. Copy and paste gimbal.py into your main package
-4. Go to the Robot Dashboard Site
-5. Create a Joystick that publishes to the topic /transform
+3. Add the following line to /boot/config.txt and then reboot the Pi: ```dtoverlay=uart3```
+5. Copy and paste gimbal.py into your main package
+6. Go to the Robot Dashboard Site
+7. Create a Joystick that publishes to the topic /transform
 
 NOTE: you will need a Roboquest PiHat
