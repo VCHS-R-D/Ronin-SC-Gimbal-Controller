@@ -13,6 +13,7 @@ Controlling the Ronin SC Gimbal with:
 - A Serial inverter is used to invert the serial signal from the Arduino TX into an SBUS signal the Gimbal understands
 - A Raspberry pi connects to the Arduino board from UART3 TX to pin 3 on the Arduino so that they can communicate through Software Serial
 - When communicating with Serial between 2 devices, the 2 devices GND must be connected too
+- Note that the circuit shows a Pihat designed by the Roboquest organization. This can also be a signal that comes from the Pi gpio uart pin. 
 # Arduino Quick Start
 
 1. Download BMC_SBUS Library
